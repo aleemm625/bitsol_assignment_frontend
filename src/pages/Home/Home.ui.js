@@ -1,9 +1,4 @@
-import {
-  Backdrop,
-  Box,
-  Fade,
-  Modal,
-} from '@mui/material';
+import { Backdrop, Box, Fade, Modal } from '@mui/material';
 import React from 'react';
 import { AutoSizer, List } from 'react-virtualized';
 
@@ -29,6 +24,7 @@ const HomeUi = (props) => {
     height: '30vh',
     top: '30%',
     left: '30%',
+    overflow: 'auto',
     // transform: 'translate(-50%, -50%)',
     // width: 400,
     bgcolor: 'background.paper',
@@ -104,7 +100,7 @@ const HomeUi = (props) => {
           <Box sx={modalBoxStyle}>
             <div>
               <div>Id: {selectedUser?._id} </div>
-              <div>Name: {selectedUser?.username} </div>
+              <div>Name: {selectedUser?.name} </div>
               <div>Email: {selectedUser?.email} </div>
               <div>Role: {selectedUser?.role} </div>
               <div>Phone Number: {selectedUser?.phoneNo} </div>

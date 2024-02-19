@@ -45,7 +45,11 @@ const UserListItem = (props) => {
         className={styles.actions}
       >
         <Grid item>
-          <IconButton aria-label="edit" className={styles.iconButton} onClick={()=> handleEdit(user)}>
+          <IconButton
+            aria-label="edit"
+            className={styles.iconButton}
+            onClick={() => handleEdit(user)}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </IconButton>
         </Grid>
@@ -53,6 +57,7 @@ const UserListItem = (props) => {
           <IconButton
             aria-label="delete"
             className={styles.iconButton}
+            style={{ color: '#bc544b' }}
             onClick={() => handleDelete(user)}
           >
             <FontAwesomeIcon icon={faSquareMinus} />
@@ -62,6 +67,7 @@ const UserListItem = (props) => {
           <IconButton
             aria-label="view"
             className={styles.iconButton}
+            style={{ color: '#3eb489' }}
             onClick={() => handleViewUser(user)}
           >
             <FontAwesomeIcon icon={faEye} />

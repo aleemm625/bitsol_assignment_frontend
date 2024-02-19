@@ -5,9 +5,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import config from '../../utils/apiConfig';
 import styles from './EditUser.module.css';
 import CreateEditUserForm from '../../components/CreateEditUserForm/CreateEditUserForm.container';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const EditUser = (props) => {
   const navigate = useNavigate();
+  const [loggedInUser] = useLocalStorage('user', null);
   const location = useLocation();
   const user = location.state?.user;
 
@@ -15,7 +17,11 @@ const EditUser = (props) => {
     try {
       const id = values?._id;
       delete values?._id;
-      const response = await axios.put(`${config.baseURL}/user/${id}`, values);
+      const response = await axios.put(`${config.baseURL}/user/${id}`, values, {
+        headers: {
+          authorization: `Bearer ${loggedInUser.access_token}`,
+        },
+      });
       if (response.data) {
         alert('user updated successfully!');
       }

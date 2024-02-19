@@ -1,4 +1,3 @@
-
 const initialValues = {
   // id: '',
   name: '',
@@ -10,8 +9,6 @@ const initialValues = {
   role: '',
   phoneNo: '',
 };
-
-
 
 module.exports = {
   initialValues,

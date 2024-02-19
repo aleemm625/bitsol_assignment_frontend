@@ -1,6 +1,5 @@
-// import LoginPage from './LoginPage';
-// import { login } from '../utils/api';
 import axios from 'axios';
+
 import LoginPageUi from './Login.ui';
 import config from '../../utils/apiConfig';
 import { useNavigate } from 'react-router-dom';
@@ -29,6 +28,7 @@ const LoginPageContainer = () => {
 
       // console.log('Login successful:', response);
     } catch (error) {
+      alert('failed to login, check your credentials!');
       console.error('Login failed:', error);
     }
   };

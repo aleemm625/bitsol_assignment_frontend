@@ -34,16 +34,6 @@ const CreateEditUserForm = (props) => {
       >
         {({ values }) => (
           <Form>
-            {/* <div className={styles.field}>
-              <label htmlFor="id">ID:</label>
-              <Field type="text" id="id" name="id" />
-              <ErrorMessage
-                name="id"
-                component="div"
-                className={styles.error}
-              />
-            </div> */}
-
             <div className={styles.field}>
               <label htmlFor="name">Name:</label>
               <Field type="text" id="name" name="name" />
@@ -56,7 +46,12 @@ const CreateEditUserForm = (props) => {
 
             <div className={styles.field}>
               <label htmlFor="email">Email:</label>
-              <Field type="email" id="email" name="email" disabled />
+              <Field
+                type="email"
+                id="email"
+                name="email"
+                disabled={isCreateUser ? false : true}
+              />
               <ErrorMessage
                 name="email"
                 component="div"

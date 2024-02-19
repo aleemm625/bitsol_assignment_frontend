@@ -6,14 +6,18 @@ import config from '../../utils/apiConfig';
 import styles from './AddNewUser.module.css';
 import CreateEditUserForm from '../../components/CreateEditUserForm/CreateEditUserForm.container';
 import { initialValues } from '../../utils/constants';
-
-
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const AddNewUser = (props) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [user] = useLocalStorage('user', null);
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      const response = await axios.post(`${config.baseURL}/user`, values);
+      const response = await axios.post(`${config.baseURL}/user`, values, {
+        headers: {
+          authorization: `Bearer ${user.access_token}`,
+        },
+      });
       if (response.data) {
         alert('user created successfully!');
       }

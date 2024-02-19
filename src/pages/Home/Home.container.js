@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import config from '../../utils/apiConfig';
 import HomeUi from './Home.ui';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,12 +15,18 @@ const Home = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [selectedUser, setSelectedUser] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [user] = useLocalStorage('user', null);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
           `${config.baseURL}/user?pageNo=${page}`,
+          {
+            headers: {
+              authorization: `Bearer ${user.access_token}`,
+            },
+          },
         );
         setUsers((prevUsers) => [...prevUsers, ...response.data]);
         //   setTotalItems(response.data.length);
@@ -44,7 +51,11 @@ const Home = () => {
       if (!confirmDelete) {
         return;
       }
-      await axios.delete(`${config.baseURL}/user/${user?._id}`);
+      await axios.delete(`${config.baseURL}/user/${user?._id}`, {
+        headers: {
+          authorization: `Bearer ${user.access_token}`,
+        },
+      });
       setUsers(users.filter((u) => u._id !== user?._id));
       setIsModalOpen(false);
     } catch (error) {
