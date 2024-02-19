@@ -1,0 +1,53 @@
+/* NavBar.module.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.homeButton {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.navButton {
+  width: 150px;
+  background-color: #555;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-left: 10px;
+}
+
+.navButton:hover {
+  background-color: #777;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+a:link,
+a:visited {
+  background-color: transparent;
+  color: #fff;
+}
